@@ -17,7 +17,7 @@ def get_resource(url):
     return requests.get(url, headers=headers)
 
 def parse_html(html_str):
-    return BeautifulSoup(html_str, "lxml")
+    return BeautifulSoup(html_str,"lxml")
 
 def get_word(soup, file):
     words=[]
@@ -51,13 +51,13 @@ def web_scraping_bot(urls):
 
 def save_to_csv(words, file):
     with open(file, "w+", newline="", encoding="utf-8")as fp:
-        writer = csv.writer(fp)
+        writer=csv.writer(fp)
         for word in words:
             writer.writerow(word)
 
 if __name__=="__main__":
     urlx=generate_urls(URL, 1, 16)
-    eng_words = web_scraping_bot(urlx)
+    eng_words=web_scraping_bot(urlx)
     for item in eng_words:
         print(item)
     save_to_csv(eng_words,"engWordList_1.csv")
